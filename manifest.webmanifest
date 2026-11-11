@@ -1,0 +1,9 @@
+{
+  "name": "Okul Gider Takibi",
+  "short_name": "Okul Gider",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f3f6f4",
+  "theme_color": "#174c3c",
+  "icons": []
+}
