@@ -18,7 +18,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Validate files and JavaScript
+        run: |
+          test -s index.html
+          test -s manifest.webmanifest
+          test -s sw.js
+          test -s icon.svg
+          sed -n '/<script type="module">/,/<\/script>/p' index.html | sed '1d;$d' > /tmp/app.mjs
+          node --check /tmp/app.mjs
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
