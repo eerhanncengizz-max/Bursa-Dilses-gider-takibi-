@@ -1,4 +1,4 @@
-const CACHE='okul-gider-v5';
+const CACHE='okul-gider-v6';
 const SHELL=['./','./index.html','./manifest.webmanifest','./icon.svg'];
 
 self.addEventListener('install',event=>{
