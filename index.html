@@ -1,5 +1,55 @@
 <!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#173b60"><link rel="manifest" href="./manifest.webmanifest"><title>Okul Gider Takibi</title><style>
-*{box-sizing:border-box}body{margin:0;background:#f3f6fa;color:#18283d;font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:850px;margin:auto;padding:16px}.card{background:white;border:1px solid #e3e9f0;border-radius:16px;padding:16px;margin:12px 0}h1{font-size:22px;color:#173b60}h2{font-size:18px}.muted{color:#718096;font-size:13px}label{display:block;font-size:13px;font-weight:650;margin:10px 0 5px}input,select,textarea,button{font:inherit;width:100%;padding:12px;border:1px solid #d6deea;border-radius:10px;background:white}button{background:#173b60;color:white;border:0;font-weight:650;cursor:pointer;margin-top:10px}.secondary{background:#e9eef5;color:#173b60}.danger{background:#b83b3b}.row{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:#edf3f9;border-radius:12px;padding:13px}.stat b{display:block;font-size:22px;margin-top:6px}.tabs{display:flex;gap:6px;overflow:auto}.tabs button{width:auto;white-space:nowrap;background:#e9eef5;color:#173b60}.tabs button.active{background:#173b60;color:white}.hidden{display:none!important}.notice{padding:12px;background:#edf4fb;border-radius:10px;margin:10px 0}.error{background:#fff0f0;color:#992e2e}.success{background:#eaf7ef;color:#205d39}.item{padding:12px 0;border-bottom:1px solid #edf0f4;display:flex;justify-content:space-between;gap:10px}.item:last-child{border:0}.pill{font-size:12px;background:#edf2f7;border-radius:20px;padding:4px 8px}.bar{height:8px;background:#e7edf4;border-radius:10px;overflow:hidden}.bar span{display:block;height:100%;background:#387eae}.right{text-align:right}@media(max-width:580px){main{padding:10px}.stats{grid-template-columns:1fr 1fr}.stats .stat:last-child{grid-column:span 2}.grid{grid-template-columns:1fr}}
+:root{color-scheme:light;--navy:#142b46;--navy-2:#1d4266;--teal:#138b83;--ink:#1d2c3e;--muted:#728197;--line:#e5ebf2;--surface:#fff;--canvas:#f3f6fa;--shadow:0 10px 30px rgba(24,47,75,.07)}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 8% 0%,rgba(30,112,139,.09),transparent 34%),var(--canvas);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:920px;margin:auto;padding:24px 18px 48px}
+header.row{padding:8px 2px 18px;border-bottom:1px solid rgba(210,221,233,.8);margin-bottom:18px}
+h1{font-size:25px;letter-spacing:-.6px;color:var(--navy);margin:0 0 3px;font-weight:800}
+h2{font-size:19px;letter-spacing:-.25px;color:var(--navy);margin:2px 0 15px}
+h3{font-size:15px;color:var(--navy);margin:22px 0 12px}
+.muted{color:var(--muted);font-size:13px}
+.card{background:var(--surface);border:1px solid rgba(222,230,239,.9);border-radius:18px;padding:20px;margin:14px 0;box-shadow:var(--shadow)}
+label{display:block;font-size:12px;font-weight:750;letter-spacing:.2px;color:#53647a;margin:13px 0 6px}
+input,select,textarea,button{font:inherit;width:100%;padding:12px 14px;border:1px solid #d8e1eb;border-radius:11px;background:#fff;color:var(--ink);transition:border-color .16s,box-shadow .16s,transform .16s}
+input,select,textarea{min-height:46px}
+textarea{min-height:90px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:0;border-color:#4c9d9a;box-shadow:0 0 0 3px rgba(19,139,131,.12)}
+button{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;border:0;font-weight:700;cursor:pointer;margin-top:10px;box-shadow:0 5px 12px rgba(20,43,70,.12)}
+button:hover{filter:brightness(1.07);transform:translateY(-1px)}
+button:active{transform:translateY(0)}
+button.secondary{background:#edf3f7;color:var(--navy);box-shadow:none;border:1px solid #e0e8ef}
+button.danger{background:#b83b48;color:white;box-shadow:none}
+.row{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
+.stat{position:relative;overflow:hidden;background:linear-gradient(145deg,#fff,#f7fafc);border:1px solid #e1e9f0;border-radius:16px;padding:16px;box-shadow:0 6px 18px rgba(24,47,75,.045)}
+.stat:after{content:"";position:absolute;width:5px;left:0;top:14px;bottom:14px;border-radius:0 6px 6px 0;background:var(--teal)}
+.stat b{display:block;font-size:clamp(20px,3vw,26px);letter-spacing:-.6px;color:var(--navy);margin-top:7px;font-variant-numeric:tabular-nums}
+.tabs{display:flex;gap:7px;overflow-x:auto;padding:5px 2px 11px;scrollbar-width:thin}
+.tabs button{width:auto;white-space:nowrap;background:#e9eff4;color:#52647a;box-shadow:none;margin:0;padding:10px 15px;border:1px solid transparent}
+.tabs button.active{background:var(--navy);color:white;box-shadow:0 5px 12px rgba(20,43,70,.16)}
+.hidden{display:none!important}
+.notice{padding:13px 15px;background:#eaf2f8;border:1px solid #dce8f1;color:#31516c;border-radius:12px;margin:12px 0;font-size:14px}
+.notice.error{background:#fff0f0;border-color:#f3d6d6;color:#992e2e}
+.notice.success{background:#eaf7ef;border-color:#d3eadb;color:#205d39}
+.item{padding:15px 0;border-bottom:1px solid #edf1f5;display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.item:last-child{border:0}
+.item b{color:#203b58}
+.item a{display:inline-block;margin-top:7px;color:#087f7a;font-size:13px;font-weight:650;text-decoration:none}
+.item a:hover{text-decoration:underline}
+.pill{font-size:11px;background:#eaf1f5;color:#52677c;border-radius:20px;padding:4px 9px;font-weight:700}
+.bar{height:9px;background:#edf1f5;border-radius:20px;overflow:hidden;margin:8px 0 14px}
+.bar span{display:block;height:100%;background:linear-gradient(90deg,#138b83,#58b5a5);border-radius:20px}
+.right{text-align:right;min-width:105px}
+#auth{max-width:540px;margin:34px auto}
+#schoolSetup{max-width:680px}
+#message{position:sticky;top:8px;z-index:5}
+#logout{margin:0}
+.remember{display:flex;align-items:center;gap:5px}
+.remember input{min-height:0}
+@media(max-width:640px){main{padding:14px 12px 34px}.card{padding:16px;border-radius:16px}.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.stats .stat:last-child{grid-column:span 2}.stat{padding:13px}.grid{grid-template-columns:1fr;gap:6px}.item{gap:8px}.right{min-width:90px}h1{font-size:22px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
+@media print{body{background:#fff}main{max-width:none;padding:0}.card{box-shadow:none;border:0;padding:8px}.tabs,button,#auth,#logout{display:none!important}.hidden{display:none!important}}
 </style></head><body><main><header class="row"><div><h1>🏫 Okul Gider Takibi</h1><div class="muted">Ortak okul giderleri · iPhone uyumlu</div></div><button id="logout" class="secondary hidden" style="width:auto">Çıkış</button></header><div id="message" class="notice hidden"></div>
 <section id="auth" class="card"><h2>Giriş / Hesap oluştur</h2><label>E-posta</label><input id="email" type="email" autocomplete="email" required placeholder="ornek@okul.com"><label>Şifre</label><input id="password" type="password" autocomplete="current-password" required minlength="6" placeholder="En az 6 karakter"><label class="remember"><input id="rememberMe" type="checkbox" checked style="width:auto;margin-right:8px"> Beni hatırla</label><div class="grid"><button id="login">Giriş yap</button><button id="signup" class="secondary">Hesap oluştur</button></div></section>
 <section id="app" class="hidden"><div class="card"><div class="row"><div><b id="user"></b><div class="muted">Bağlı okul</div></div><select id="schoolSelect" style="max-width:190px"></select></div></div>
